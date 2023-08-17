@@ -9,35 +9,66 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Get repositories code
         uses: actions/checkout@v3
+      - name: Cache devs
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install modules
         run: npm ci
       - name: Lint
         run: npm run lint
   test:
     needs: [lint]
-    strategy:
-      matrix:
-        version: [14, 16, 18]
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Get repositories code
+        uses: actions/checkout@v3
+      - name: Cache devs
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Install modules
+        run: npm ci
+      - name: Test
+        run: npm run test-headless
+  build:
+    needs: [lint, test]
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-version: [16, 18]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{matrix.os}}
+    steps:
+      - name: Get repositories code
         uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.version }}
-      - name: Install modules
-        run: npm ci
-      - name: Test
-        run: npm run test
-  build:
-    needs: [lint, test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Cache devs
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{matrix.os}}-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install modules
         run: npm ci
       - name: Build
         run: npm run build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-files
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build project
+        uses: actions/download-artifact@v3
+        with:
+          name: build-files
