@@ -3,17 +3,24 @@
   "ignorePatterns": [
     "projects/**/*"
   ],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
   "overrides": [
     {
       "files": [
-        "*.ts"
+        "*.ts", "*.js"
       ],
       "extends": [
         "eslint:recommended",
+        "plugin:sonarjs/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
+      "plugins": ["sonarjs"],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
