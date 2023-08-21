@@ -7,7 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EntityDataModule } from '@ngrx/data';
-import { entityConfig } from './entity-metadata';
+import { entityConfig } from './store/entity-metadata';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
