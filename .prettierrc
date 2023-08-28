@@ -3,8 +3,10 @@
   "trailingComma": "all",
   "singleQuote": true,
   "bracketSpacing": true,
+  "useTabs": true,
   "printWidth": 120,
   "tabWidth": 2,
+  "endOfLine": "auto",
   "overrides": [
     {
       "files": "*.html",

@@ -1,7 +1,8 @@
 {
   "root": true,
   "ignorePatterns": [
-    "projects/**/*"
+    "projects/**/*",
+    "*.ico"
   ],
   "env": {
     "browser": true,
@@ -11,7 +12,8 @@
   "overrides": [
     {
       "files": [
-        "*.ts", "*.js"
+        "*.ts",
+        "*.js"
       ],
       "extends": [
         "eslint:recommended",
@@ -20,7 +22,9 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
-      "plugins": ["sonarjs"],
+      "plugins": [
+        "sonarjs"
+      ],
       "rules": {
         "@angular-eslint/directive-selector": [
           "error",
@@ -51,10 +55,14 @@
       "rules": {}
     },
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
-        "projects": ["tsconfig.*?.json",
-          "e2e/tsconfig.json"],
+        "projects": [
+          "tsconfig.*?.json",
+          "e2e/tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
       "extends": [
@@ -63,27 +71,57 @@
       ]
     },
     {
-      "files": ["*.component.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.component.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {
-        "max-len": ["error", { "code": 140 }]
+        "max-len": [
+          "error",
+          {
+            "code": 140
+          }
+        ]
       }
     },
     {
-      "files": ["*.component.ts"],
-      "extends": ["plugin:@angular-eslint/template/process-inline-templates"]
+      "files": [
+        "*.component.ts"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ]
     },
-      {
-      "files": ["src/**/*.spec.ts", "src/**/*.d.ts"],
+    {
+      "files": [
+        "src/**/*.spec.ts",
+        "src/**/*.d.ts"
+      ],
       "parserOptions": {
         "project": "./tsconfig.spec.json"
       },
-      "extends": ["plugin:jasmine/recommended"],
-      "plugins": ["jasmine"],
-      "env": { "jasmine": true },
+      "extends": [
+        "plugin:jasmine/recommended"
+      ],
+      "plugins": [
+        "jasmine"
+      ],
+      "env": {
+        "jasmine": true
+      },
       "rules": {
         "@typescript-eslint/no-unused-vars": "off"
       }
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended-requiring-type-checking"
+      ]
     }
   ]
 }
