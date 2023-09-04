@@ -1,0 +1,50 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  // Get the color config from the theme.
+  $color-config: mat.get-color-config($theme);
+
+
+  $typography-config: mat.get-typography-config($theme);
+  $my-font-family: mat.font-family($typography-config);
+
+  // Get the primary color palette from the color-config.
+  $primary-palette: map.get($color-config, 'primary');
+  $accent-palette: map.get($color-config, 'accent');
+  $warn-palette: map.get($color-config, 'warn');
+  $is-dark-theme: map.get($color-config, 'is-dark');
+
+  .mat-typography {
+    .mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3,
+    .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6 {
+      @include mat.typography-level($typography-config, 'body-1');
+      font-weight: 700;
+    }
+  }
+
+
+  .toolbar-wrapper {
+    position: fixed;
+    z-index: 101;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+
+    .mat-toolbar.mat-toolbar-multiple-rows {
+      width: 100%;
+      min-height: 100%;
+      background-color: mat.get-color-from-palette($primary-palette, White);
+      border-bottom: 1px solid black;
+
+      .toolbar-container {
+        padding: 0;
+        .search-bar-wrapper {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+}

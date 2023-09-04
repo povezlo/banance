@@ -1,0 +1,205 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import 'apps/osv-frontend/src/app/styles/base/variables';
+
+@include mat.core($osv-typography-config);
+
+@mixin expansion-panel-theme($theme) {
+  $color-config: mat.get-color-config($theme);
+
+  $primary-palette: map.get($color-config, 'primary');
+
+  .mat-expansion-panel {
+    border-top: $osv-border-1;
+
+    &.panel-opened {
+      border-top: none;
+    }
+  }
+
+  .mat-expansion-panel-body {
+    border-bottom: $osv-border-1;
+    padding: 1rem 0 !important;
+  }
+
+  .mat-expansion-panel-header-description {
+    @include mat.typography-level($osv-typography-config, 'caption');
+    text-transform: uppercase;
+    margin-right: 0 !important;
+  }
+
+
+  .drawer-container {
+    .left-sidebar, .right-sidebar {
+      background-color: mat.get-color-from-palette($primary-palette, Navbar);
+    }
+    &_demo {
+      top: 3.1rem;
+    }
+  }
+}
+
+.mat-expansion-panel {
+  &.favorite-stocks-expansion-panel {
+    .mat-expansion-panel-header {
+      .mat-expansion-indicator {
+        margin-bottom: 0.3rem;
+        margin-left: 0.5rem;
+      }
+    }
+    &.panel-opened {
+      .mat-expansion-panel-header {
+        .mat-expansion-indicator {
+          margin-bottom: 0;
+          margin-top: 0.3rem;
+        }
+      }
+    }
+  }
+
+  &.historical-expansion-panel {
+    height: 1.8rem;
+    &.expanded {
+      height: auto;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+
+    .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .mat-expansion-panel-header {
+      min-height: 2.25rem;
+      margin: 0 auto;
+      font-size: .8rem;
+      .mat-content {
+        margin-top: 0;
+        padding-right: .5rem;
+      }
+      &[aria-expanded="true"] {
+        width: auto;
+        .mat-expansion-indicator {
+          margin-bottom: 0;
+        }
+        .mat-content {
+          text-decoration: underline;
+        }
+      }
+      &[aria-expanded="false"] {
+        width: 4rem;
+        .mat-expansion-indicator {
+          margin-bottom: .5rem;
+        }
+      }
+    }
+
+    .mat-expansion-panel-content {
+      .mat-expansion-panel-body {
+        padding: 0 !important;
+      }
+    }
+  }
+}
+
+.accordion-item {
+  &.absolute-expansion-panel {
+
+    min-width: 25%;
+    .accordion-panel {
+      border: 1px solid #f4f9fd;
+      border-top: none;
+
+      .accordion-item-header {
+        background-color: #f4f9fd;
+        font-size: .8rem;
+        margin-bottom: 1.4rem;
+        .mat-expansion-panel-header-title {
+          color: #7f93af;
+          font-weight: 500;
+        }
+      }
+      .mat-expansion-panel-header.mat-expanded {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        background-color: #6d84a6;
+        .mat-expansion-panel-header-title {
+          color: #fff;
+        }
+      }
+      &:last-child {
+        margin-bottom: 0;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  &.growth-rate-expansion-panel {
+    .mat-expansion-panel-body {
+      .wrapper-table {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        .arrows {
+          width: 1.5rem;
+          border-left: 1px solid #ce355d;
+          position: relative;
+          z-index: 99;
+          .arrow-drop-down {
+            position: absolute;
+            top: 99%;
+            right: .8rem;
+            color: #ce355d;
+          }
+          .arrow-box {
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            top: 65%;
+            right: 50%;
+            background-color: white;
+            .arrow-drop-down {
+              position: absolute;
+              top: -.7rem;
+              right: 0;
+            }
+          }
+        }
+      }
+      &::after {
+        content: 'Δ 0.65';
+        position: absolute;
+        z-index: 100;
+        top: 40%;
+        right: .5rem;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        background: white;
+      }
+      &::before {
+        content: "Δ 0.5";
+        position: absolute;
+        top: 82%;
+        z-index: 100;
+        right: .5rem;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        background: white;
+      }
+    }
+  }
+}
+
+
+.osv-theme .osv-info {
+  .mat-expansion-panel-header-title { color: #fff; }
+  .mat-expansion-panel-header, .mat-expansion-panel-header:hover {
+    background: #6d84a6 !important;
+  }
+  ul {
+    padding-inline-start: 1rem;
+  }
+}

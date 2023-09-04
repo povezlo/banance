@@ -1,0 +1,135 @@
+@use '@angular/material' as mat;
+
+@include mat.core($osv-typography-config);
+
+.osv-theme {
+  .mat-dialog-actions {
+    min-height: auto !important;
+    padding: 1rem 0;
+  }
+
+  .mat-dialog-container {
+    background: #fff;
+    padding: 0;
+  }
+
+  .mat-dialog-content {
+    padding: 0;
+    margin: 0;
+    p {
+      @include mat.typography-level($osv-typography-config, 'body-1');
+      padding: 1rem;
+      text-align: center;
+    }
+  }
+
+  .account-modal-cancel {
+    .mat-dialog-container {
+      border: .3rem solid #d9534f;
+      background-color: #edf0f6;
+
+      h2 {
+        background: #fff;
+        padding: 1rem;
+        text-align: center;
+        color: #d9534f;
+      }
+    }
+
+    .mat-dialog-content {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      h4 {
+        font-size: 0.875rem;
+      }
+      p {
+        margin-top: 1.2rem;
+        margin-bottom: 0;
+      }
+    }
+
+    .mat-dialog-actions {
+      padding: 0;
+      .with-button {
+        width: 8rem;
+      }
+    }
+  }
+
+  .demo-modal {
+    max-width: 55rem !important;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      .right, .left {
+        padding: 1.5rem;
+      }
+      .left {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #f6f7f9;
+        h1 {
+          text-align: center;
+        }
+      }
+      .right {
+        flex-grow: 2;
+        box-shadow: inset 0 0 0 100vmax rgb(52 63 87 / 94%);
+        background-position: right top;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding: 2rem;
+        .logo {
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+        ul > li {
+          color: #f6f7f9;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  .account-modal {
+    .mat-dialog-container {
+      padding: 0;
+      background-color: #edf0f6;
+
+      h2 {
+        background: #fff;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      h4 {
+        font-size: 1.2rem;
+        padding: .6rem;
+        font-weight: bold;
+        color: #54657e;
+      }
+    }
+
+    .mat-dialog-actions {
+      padding: 0;
+      .with-button {
+        width: 8rem;
+      }
+    }
+
+    .mat-dialog-content {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+  }
+}
+
+.cdk-overlay-backdrop.backdrop-demo {
+  opacity: 0.8 !important;
+  background: black;
+}

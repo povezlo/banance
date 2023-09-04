@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin button-theme($theme) {
+  // Get the color config from the theme.
+  $color-config: mat.get-color-config($theme);
+
+  // Get the primary color palette from the color-config.
+  $primary-palette: map.get($color-config, 'primary');
+  $accent-palette: map.get($color-config, 'accent');
+  $warn-palette: map.get($color-config, 'warn');
+
+  // check me
+  $my-palette: mat.define-palette(mat.$indigo-palette);
+
+    .my-custom-style {
+      background: mat.get-color-from-palette($my-palette, '500');
+      color: mat.get-color-from-palette($my-palette, '500-contrast');
+    }
+    .my-custom-darker-style {
+      background: mat.get-color-from-palette($my-palette, 'darker');
+      color: mat.get-color-from-palette($my-palette, 'darker-contrast');
+    }
+
+  .kids-theme .osv-button {
+      // Read the 500 hue from the primary color palette.
+      color: mat.get-color-from-palette($primary-palette, A200);
+      padding: .25rem 1rem;
+    }
+
+
+// .btn-lg  {
+//   @include mat.typography-level($osv-typography-config, 'subheading-1');
+// }
+// .btn-sm {
+//   @include mat.typography-level($osv-typography-config, 'body-2');
+//   min-width: 6.125rem!important;
+//   min-height: 1.75rem;
+// }
+// .btn-xs {
+//   min-height: 2.75rem;
+//   font-size: .625rem;
+//   line-height: 1.75rem!important;
+// }
+
+// .mat-typography {
+//   .mat-button, .mat-raised-button, .mat-icon-button,
+//   .mat-stroked-button, .mat-flat-button, .mat-fab, .mat-mini-fab {
+//     @include mat.typography-level($osv-typography-config, 'body-1');
+//   }
+}

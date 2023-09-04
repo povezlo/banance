@@ -1,0 +1,276 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@include mat.core($osv-typography-config);
+
+.osv-theme {
+  .error-snack {
+    background: #ce355d !important;
+    color: #f6f7f9 !important;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    top: 0;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0;
+  }
+
+  .shared-search.no-wrap .mat-chip-list-wrapper {
+    flex-wrap: nowrap;
+  }
+
+  .light .mat-checkbox-frame {
+    border-color: #54657e;
+  }
+
+  .osv-form-input {
+    input { color: #54657E; }
+    .mat-form-field-infix {
+      border: 0;
+      padding: .6rem 0 .3rem 0;
+    }
+    .mat-form-field-outline-start,
+    .mat-form-field-outline-gap,
+    .mat-form-field-outline-end {
+      border-color: #e2e6ed !important;
+      border-radius: 0 !important;
+    }
+  }
+
+  .osv-account-form-input {
+    .mat-form-field-infix {
+      border-radius: .4rem;
+      padding: .6rem 0 .6rem 0;
+    }
+    &.mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix {
+      top: 0;
+    }
+    &.mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+      padding: 1.1rem 1em;
+    }
+  }
+
+  .osv-adjustment-input {
+    &.mat-form-field.mat-form-field {
+      padding: 0.3rem;
+      input {
+        position: relative;
+        bottom: 0.25rem;
+      }
+    }
+  }
+
+  .osv-valuation-input {
+    &.mat-form-field-appearance-outline .mat-form-field-flex {
+      padding: 0 0.75em .3rem 0.75em;
+    }
+    &.mat-select-trigger {
+      align-items: baseline;
+    }
+
+    // Hide float label
+    &.mat-form-field-should-float .mat-form-field-label-wrapper {
+      display: none!important;
+    }
+    &.mat-focused .al-subscribe-form-placeholder,
+    &.mat-form-field-invalid .al-subscribe-form-placeholder {
+      display: none!important;
+    }
+
+  }
+
+  .osv-form-input.no-border {
+    .mat-form-field-outline-start,
+    .mat-form-field-outline-gap,
+    .mat-form-field-outline-end {
+      border: 0 !important;
+    }
+  }
+
+  .osv-form-input.readonly {
+    .mat-form-field-infix {
+      padding: 0;
+    }
+    .mat-form-field-outline-start,
+    .mat-form-field-outline-gap,
+    .mat-form-field-outline-end {
+      border: 0 !important;
+    }
+    .mat-form-field-flex {
+      padding: 0;
+    }
+  }
+
+  .osv-form-input {
+    input:disabled {
+      opacity: .6;
+    }
+  }
+
+  .osv-form-input.ebit-input {
+    .mat-form-field-wrapper {
+      width: 5.625rem;
+      border: solid .0625rem #b8b8b8;
+      border-radius: .125rem;
+      text-align: center;
+      font-weight: 400;
+    }
+  }
+
+  .osv-form-input.ratios-table-filter {
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0.7rem;
+    z-index: 1000;
+    .mat-form-field-wrapper { padding-top: 3.25rem }
+    .mat-form-field-wrapper .mat-form-field-flex {
+      .mat-form-field-infix {
+        padding-top: 1.5rem;
+        padding-left: 0;
+      }
+      background-color: white;
+      .mat-form-field-outline {
+        .mat-form-field-outline-end, .mat-form-field-outline-start {
+          border: none;
+        }
+      }
+
+      .mat-ratios-select-panel {
+        min-height: 20rem;
+      }
+
+      .mat-select {
+        .mat-select-trigger {
+          width: auto;
+          align-items: baseline;
+          .mat-select-arrow-wrapper {
+            .mat-select-arrow {
+              color: #6d84a6;
+            }
+          }
+
+          .mat-select-value {
+            color: #6d84a6;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    &.fullscreen { .mat-form-field-wrapper { padding-top: 1.7rem } }
+  }
+
+  .osv-form-input.slim.mat-form-field-appearance-outline {
+     .mat-form-field-wrapper {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .osv-form-input.select { width: 8rem; }
+  .osv-form-input.datepicker { width: 10rem; }
+
+  .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-datepicker-toggle-default-icon {
+    width: 1.15em;
+    height: 1.15em;
+  }
+}
+
+@mixin form-theme($theme) {
+  // Get the color config from the theme.
+  $color-config: mat.get-color-config($theme);
+
+  // Get the primary color palette from the color-config.
+  $primary-palette: map.get($color-config, 'primary');
+
+  mat-form-field.mat-form-field {
+    @include mat.typography-level($osv-typography-config, 'body-1');
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        .mat-form-field-outline {
+          background-color: mat.get-color-from-palette($primary-palette, White);
+        }
+      }
+    }
+    &.input-full-width {
+      width: 100%;
+    }
+
+    mat-label {
+      @include mat.typography-level($osv-typography-config, 'body-1');
+      color: mat.get-color-from-palette($primary-palette, DarkBlue);
+    }
+  }
+  .table-input.mat-form-field.mat-form-field {
+    width: 8rem;
+    .mat-form-field-wrapper {
+      .mat-form-field-flex {
+        .mat-form-field-infix {
+          padding: 0.4em 0 !important;
+          .mat-form-field-label-wrapper {
+            top: -1.5em;
+          }
+        }
+      }
+    }
+  }
+
+  .table-input.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+  }
+  .table-input.mat-form-field-appearance-outline .mat-form-field-wrapper {
+    padding: 0;
+  }
+  .filter-menu-input.mat-form-field.mat-form-field {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  .filter-menu-input .mat-form-field-wrapper {
+    margin: 0 !important;
+    padding: 0;
+  }
+
+  .ratios-container {
+    .ratios-table-filter.mat-form-field-appearance-outline {
+      .mat-form-field-flex {
+        padding: 0 0.75em 0 1.75em;
+      }
+      .mat-form-field-wrapper {
+        margin: 0;
+      }
+      .mat-form-field-outline-start, .mat-form-field-outline-end {
+        border: none;
+        border-bottom: 1px black solid;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.upload-csv-area {
+  cursor: pointer;
+  width: 550px;
+  height: 225px;
+  border: 2px dashed gray;
+  p {
+    color: #54657e;
+    margin: 0 0 1rem 0;
+  }
+  span { color: #b9c2d3; }
+  p, span { font-weight: 500; }
+}
+
+.upload-csv-content {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,41 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import 'apps/osv-frontend/src/app/styles/base/variables';
+
+@mixin sidenav-theme($theme) {
+  // Get the color config from the theme.
+  $color-config: mat.get-color-config($theme);
+
+  // Get the primary color palette from the color-config.
+  $primary-palette: map.get($color-config, 'primary');
+
+  .mat-drawer-container {
+    background-color: $osv-main-content-background;
+  }
+
+  .drawer-container {
+    width: $osv-sidenav-draw-content-width;
+    min-height: $osv-sidenav-height;
+    margin: $margin-drawer-container;
+    display: flex;
+    .left-sidebar, .right-sidebar {
+      background-color: mat.get-color-from-palette($primary-palette, Navbar);
+    }
+    .left-sidebar {
+      width: $left-sidebar;
+    }
+    .right-sidebar {
+      width: $right-sidebar;
+    }
+    .mat-drawer-content {
+      flex-grow: 1;
+      margin-top: $osv-header-height;
+      padding: 1rem;
+    }
+    .mat-drawer-content.no-margin {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

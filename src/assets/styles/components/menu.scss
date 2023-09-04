@@ -1,0 +1,86 @@
+@use '@angular/material' as mat;
+
+@include mat.core($osv-typography-config);
+
+.mat-menu-content:not(:empty) {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.mat-expansion-indicator::after {
+  position: relative;
+  top: -.2rem;
+}
+
+.mat-expansion-panel.white .mat-expansion-indicator::after {
+  color: #fff !important;
+}
+
+.mat-button:hover .mat-button-focus-overlay  {
+  background-color: transparent!important;
+}
+
+.mat-expansion-panel-header .mat-content {
+  flex: none;
+}
+
+.osv-theme {
+  .mat-expansion-panel-header, .mat-expansion-panel-header.mat-expanded {
+    height: auto;
+  }
+}
+
+.logout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: .5rem;
+}
+
+.mat-stroked-button {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+#left-menu .mat-line {
+  @include mat.typography-level($osv-typography-config, 'caption');
+}
+
+.mat-menu-panel {
+  &.tooltipWithLink {
+    background-color: #2c364c;
+    padding-top: 0.5rem;
+    max-width: 13rem;
+    border-radius: 0;
+    opacity: 0.9;
+    left: 10px;
+    .tooltip-inner {
+      font-size: 0.8rem;
+      color: #fff;
+      text-align: center;
+      a {
+        color: #3a9bea;
+        text-decoration: none;
+      }
+    }
+  }
+  &.portfolio-stocks-filter {
+    min-width: 11rem;
+    min-height: 20rem;
+    border-radius: 0;
+    opacity: 0.9;
+    left: 0;
+  }
+
+  &.top-menu {
+    margin-top: 0.9rem;
+    .mat-menu-item {
+      height: 2.5rem;
+    }
+  }
+}
+
+.cdk-drag-preview {
+  display: none;
+  cursor: move;
+}
