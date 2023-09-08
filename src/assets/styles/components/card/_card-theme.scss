@@ -1,0 +1,56 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  // Get the color config from the theme.
+  $color-config: mat.get-color-config($theme);
+
+  // Get the primary color palette from the color-config.
+  $primary-palette: map.get($color-config, 'primary');
+
+  .my-card-button.mat-mdc-button {
+    color: mat.get-color-from-palette($primary-palette, 500);
+  }
+    mat-card.mat-card {
+
+      .mat-card-header {
+        mat-card-title.mat-card-title {
+          border-color: mat.get-color-from-palette($primary-palette, 900);
+          background-color: mat.get-color-from-palette($primary-palette, 50);
+        }
+      }
+    }
+}
+
+@mixin typography($theme) {
+  // Get the typography config from the theme.
+  $typography-config: mat.get-typography-config($theme);
+
+  font-family: mat.font-family($typography-config);
+  mat-card mat-card-header mat-card-title {
+    font-size: mat.font-size($typography-config, headline-3)
+  }
+
+}
+
+@mixin theme($theme) {
+  $color-config: mat.get-color-config($theme);
+
+  mat-card.mat-mdc-card {
+      padding: 1.25rem;
+      max-width: 400px;
+
+
+  @if $color-config !=null {
+      @include color($theme);
+  }
+
+  $typography-config: mat.get-typography-config($theme);
+
+  @if $typography-config !=null {
+      @include typography($theme);
+  }
+}
+
+
+}

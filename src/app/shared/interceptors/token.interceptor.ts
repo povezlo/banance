@@ -4,15 +4,15 @@ import { API_KEY } from '../injectTokens/injectTokens';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(@Inject(API_KEY) private readonly apiKey: string) {}
+	constructor(@Inject(API_KEY) private readonly apiKey: string) {}
 
-  intercept(request: HttpRequest<HttpHeaders>, next: HttpHandler) {
-    request = request.clone({
-      setParams: {
-        apiKey: this.apiKey,
-      },
-    });
+	intercept(request: HttpRequest<HttpHeaders>, next: HttpHandler) {
+		request = request.clone({
+			setParams: {
+				apiKey: this.apiKey,
+			},
+		});
 
-    return next.handle(request);
-  }
+		return next.handle(request);
+	}
 }
