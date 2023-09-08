@@ -10,13 +10,12 @@ import { ApiService } from 'src/app/shared/services/api.services';
 export class HomeComponent implements OnInit {
 	constructor(private api: ApiService) {}
 
-	ngOnInit() {
-		this.api
-			.get('recipes/random', {
-				limitLicense: true,
-				tags: 'salad',
-				number: 10,
-			})
-			.subscribe((data) => console.log(data));
+	ngOnInit(): void {
+		this.api.get('recipes/random', {
+			limitLicense: true,
+			tags: 'salad',
+			number: 10,
+		});
+		//.subscribe(data => console.log(data));
 	}
 }
