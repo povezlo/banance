@@ -1,4 +1,17 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, ElementRef, Renderer2 } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+@Directive({
+	selector: '[appColor]',
+})
+export class HighlightDirective {
+	constructor(
+		el: ElementRef,
+		private renderer: Renderer2,
+	) {
+		renderer.addClass(el.nativeElement, 'bI');
+	}
+}
 
 @Component({
 	selector: 'app-header',

@@ -1,0 +1,51 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette(mat.$indigo-palette, 500),
+      accent: mat.define-palette(mat.$yellow-palette, A200, A100, A400),
+      warn: mat.define-palette(mat.$red-palette),
+    ),
+  )
+);
+
+$color: map-get($map: $theme, $key: color);
+$background: map-get($map: $color, $key: background);
+$foreground: map-get($map: $color, $key: foreground);
+
+
+$themed-background: map-merge($background, (
+      hover: #f4f9fd,
+      tooltip: #0ac600,
+      card: white,
+      disabled-button: rgba(0, 0, 0, 0.12),
+      raised-button: white,
+      focused-button: rgba(0, 0, 0, 0.12),
+      selected-button: #e0e0e0,
+      selected-disabled-button: #bdbdbd,
+      disabled-button-toggle: #eeeeee,
+      unselected-chip: #e0e0e0,
+      disabled-list-option: #eeeeee,
+      dialog: #edf0f6,
+      status-bar: #871111,
+      app-bar: #2621ba,
+    ));
+
+$themed-foreground: map-merge($foreground, (
+      text: rgb(34, 34, 34),
+      dividers: rgba(0, 0, 0, 0.12),
+    ));
+
+// @debug $themed-background;
+
+$themed-color: map-merge($color, (background: $themed-background, foreground: $themed-foreground));
+
+// override color of theme ma
+$my-theme: map-merge($theme, (color: $themed-color));
+
+$app-light-variants: (
+  success: mat.define-palette(mat.$green-palette),
+  info: mat.define-palette(mat.$blue-palette),
+);

@@ -1,3 +1,17 @@
-@import "./assets/styles/main.scss";
-@import "./assets/styles/custom-theme.scss";
+@use '@angular/material' as mat;
+@use 'sass:map';
 
+@use "./styles/themes/light";
+@use "./styles/typography/config" as typography;
+
+@use "./styles/components" as my-components-themes;
+
+@include mat.core();
+
+@include mat.typography-hierarchy(typography.$app-typography);
+
+@include my-components-themes.theme(light.$my-theme, typography.$config, light.$app-light-variants);
+
+body {
+  background: mat.get-color-from-palette(mat.$gray-palette, 50);
+}

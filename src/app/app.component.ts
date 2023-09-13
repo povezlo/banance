@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { StyleManager } from './shared/services/style-manager.service';
 
 @Component({
 	selector: 'app-root',
@@ -6,5 +8,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-	title = 'banance';
+	@ViewChild('sidenav') sidenav: MatSidenav | undefined;
+
+	reason = '';
+	isDark = this.styleManager.isDark;
+
+	constructor(private styleManager: StyleManager) {}
+
+	close(reason: string) {
+		this.reason = reason;
+		this.sidenav?.close();
+	}
+
+	toggleDarkTheme() {
+		this.styleManager.toggleDarkTheme();
+		this.isDark = !this.isDark;
+	}
 }
