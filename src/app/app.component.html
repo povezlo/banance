@@ -1,80 +1,35 @@
-<!-- <app-navigation></app-navigation> -->
-<p>
-  <mat-toolbar>
-    <span>My Application</span>
-  </mat-toolbar>
-</p>
+<div class="app-container">
+  <header>
+      <app-header></app-header>
+  </header>
+  <main>
+      <mat-sidenav-container (backdropClick)="close('backdrop')">
 
-<p>
-  <mat-toolbar>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+          <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+              <p>
+                  <button mat-button (click)="close('toggle button')">Toggle</button>
+              </p>
+          </mat-sidenav>
 
-<p>
-  <mat-toolbar color="primary">
-    <button mat-button class="btn-test" aria-label="Example icon-button with menu icon">
-      download
-    </button>
-    <span class="mat-body">My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+          <mat-sidenav-content class="mat-elevation-z1">
+                <mat-toolbar>
+                  <mat-toolbar-row>
+                    <h2>APP_TOOLBAR_TITLE </h2>
+                  </mat-toolbar-row>
+                </mat-toolbar>
+              <h1>Angular Material Theming System: Complete Guide</h1>
+              <p>Lorem*40</p>
+              <router-outlet></router-outlet>
+          </mat-sidenav-content>
+      </mat-sidenav-container>
+  </main>
+  <footer>
+      <app-footer></app-footer>
+  </footer>
+</div>
 
-<p>
-  <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <span>My App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </mat-toolbar-row>
 
-    <mat-toolbar-row>
-      <span>Second Line</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-</p>
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button class="my-card-button" mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>
+
+
+
+

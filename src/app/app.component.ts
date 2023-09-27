@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
 	selector: 'app-root',
@@ -6,5 +7,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-	title = 'banance';
+	@ViewChild('sidenav') sidenav: MatSidenav | undefined;
+
+	reason = '';
+
+	close(reason: string) {
+		this.reason = reason;
+		this.sidenav?.close();
+	}
 }

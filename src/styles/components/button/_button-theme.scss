@@ -1,0 +1,46 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@mixin color($theme) {
+  // Get the color config from the theme.
+  $config: mat.get-color-config($theme);
+
+  // Get the primary color palette from the color-config.
+  $primary-palette: map.get($config, "accent");
+
+    .theme-toggle {
+      &.mdc-button,
+      &.mdc-icon-button,
+      &.mdc-stroked-button,
+      &.mdc-raised-button {
+        background-color: mat.get-color-from-palette($primary-palette, 500);
+        color: mat.get-color-from-palette($primary-palette, 50);
+    }
+  }
+
+    .btn-big {
+        width: 300px;
+    }
+}
+
+@mixin typography($typography-config) {
+    .mdc-button,
+    .mdc-icon-button,
+    .mdc-stroked-button,
+    .mdc-raised-button {
+        @include mat.typography-level($typography-config, "button");
+    }
+}
+
+@mixin theme($theme, $typography-config) {
+  $color-config: mat.get-color-config($theme);
+  @include mat.button-theme($theme);
+
+  @if $color-config !=null {
+    @include color($theme);
+  }
+
+  @if $typography-config !=null {
+    @include typography($typography-config);
+  }
+}

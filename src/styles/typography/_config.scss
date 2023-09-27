@@ -1,0 +1,33 @@
+@use "@angular/material" as mat;@use 'sass:map';
+
+$heading-font-family: "'Work Sans', sans-serif";
+
+$big-typography-level: mat.define-typography-level(
+    $font-family: 'Open Sans',
+    $font-weight: 800,
+    $font-size: 3rem,
+    $line-height: 1,
+    $letter-spacing: 0.2em
+);
+
+$app-typography: mat.define-typography-config(
+    $headline-1: mat.define-typography-level(112px, $font-family: $heading-font-family),
+    $headline-2: mat.define-typography-level(56px, $font-family: $heading-font-family),
+    $headline-3: mat.define-typography-level(45px, $font-family: $heading-font-family),
+    $headline-4: mat.define-typography-level(34px, $font-family: $heading-font-family),
+    $headline-5: mat.define-typography-level(24px, $font-family: $heading-font-family),
+    $headline-6: mat.define-typography-level(20px, $font-family: $heading-font-family),
+    $subtitle-2: mat.define-typography-level(16px, $font-family: $heading-font-family),
+    $subtitle-1: mat.define-typography-level(15px, $font-family: $heading-font-family),
+    $body-2: mat.define-typography-level(14px, $font-family: $heading-font-family),
+    $body-1: mat.define-typography-level(14px, $font-family: $heading-font-family),
+    $button: mat.define-typography-level(16px, $font-family: $heading-font-family),
+    $caption: mat.define-typography-level(12px, $font-family: $heading-font-family),
+  );
+
+$config: map.merge(
+    $app-typography,
+    (
+        fs-big-typography: $big-typography-level
+    )
+);

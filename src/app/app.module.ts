@@ -2,6 +2,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -10,22 +11,21 @@ import { EntityDataModule } from '@ngrx/data';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { entityConfig } from './store/entity-metadata';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatCardModule } from '@angular/material/card';
-
-import { AppRoutingModule } from './app-routing.module';
-import { HomeModule } from './pages/home/home.module';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { HeaderModule } from './components/header';
+import { FooterModule } from './components/footer';
 
 import { environment } from 'src/environments/environment.prod';
 import { BASE_URL, API_KEY } from './shared/injectTokens/injectTokens';
@@ -36,13 +36,16 @@ const MATERIAL_MODULES = [
 	MatIconModule,
 	MatGridListModule,
 	MatSidenavModule,
-	MatToolbarModule,
 	MatButtonModule,
 	MatSidenavModule,
 	MatIconModule,
 	MatListModule,
 	OverlayModule,
 	MatCardModule,
+	MatProgressSpinnerModule,
+	MatDividerModule,
+	MatTooltipModule,
+	MatToolbarModule,
 ];
 const NGRX_STORE_MODULES = [
 	StoreModule.forRoot({}, {}),
@@ -52,7 +55,7 @@ const NGRX_STORE_MODULES = [
 	StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
 ];
 @NgModule({
-	declarations: [AppComponent, HeaderComponent, FooterComponent, NavigationComponent],
+	declarations: [AppComponent],
 	imports: [
 		BrowserModule,
 		BrowserAnimationsModule,
@@ -60,7 +63,8 @@ const NGRX_STORE_MODULES = [
 		HttpClientModule,
 		...NGRX_STORE_MODULES,
 		...MATERIAL_MODULES,
-		HomeModule,
+		HeaderModule,
+		FooterModule,
 	],
 	providers: [
 		{

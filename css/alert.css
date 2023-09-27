@@ -1,0 +1,52 @@
+.alert {
+  position: relative;
+  padding: 1rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert hr {
+  margin: 1rem 0;
+  color: inherit;
+  background-color: currentColor;
+  border: 0;
+  opacity: 0.25;
+  height: 1px;
+}
+
+.alert .alert-heading {
+  color: inherit;
+}
+
+.alert .alert-link {
+  font-weight: 700;
+}
+
+.alert mat-icon {
+  color: currentColor;
+  vertical-align: middle;
+  font-size: inherit;
+  line-height: inherit;
+  height: inherit;
+  width: inherit;
+}
+
+.alert .alert-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.alert .alert-close mat-icon {
+  color: red;
+  font-size: 40px;
+  line-height: 1;
+  height: 34px;
+  width: 44px;
+}
+
+.alert .alert-footer {
+  margin-bottom: 0;
+}

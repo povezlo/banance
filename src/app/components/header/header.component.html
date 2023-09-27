@@ -1,1 +1,21 @@
-<p>header works!</p>
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <section>
+      <app-button mat-icon-button  color="accent" aria-label="Example icon-button with menu icon">
+          <mat-icon>menu</mat-icon>
+      </app-button>
+      <span class="mat-headline">My App</span>
+  </section>
+
+  <section>
+      <app-button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </app-button>
+      <app-button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </app-button>
+      <app-button mat-button (click)="toggleDarkTheme()" class="theme-toggle btn-big" aria-label="Toggle Dark Theme">
+            <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
+      </app-button>
+  </section>
+</mat-toolbar>
+
