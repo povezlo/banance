@@ -9,6 +9,7 @@
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "eslint ./src/**",
+    "lint:ci": "lint",
     "lint:fix": "eslint ./src/** --fix"
   },
   "private": true,
