@@ -3,8 +3,8 @@
 
 @use "./styles/themes/light";
 @use "./styles/typography/config" as typography;
-
 @use "./styles/components" as my-components-themes;
+@import "./styles/main.scss";
 
 @include mat.core();
 
@@ -12,6 +12,11 @@
 
 @include my-components-themes.theme(light.$my-theme, typography.$config, light.$app-light-variants);
 
+html, body {
+  height: 100%;
+}
+
 body {
+  margin: 0;
   background: mat.get-color-from-palette(mat.$gray-palette, 50);
 }

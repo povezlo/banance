@@ -2,6 +2,7 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -20,7 +21,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AppRoutingModule } from './app-routing.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
 import { HeaderModule } from './components/header';
@@ -29,9 +30,6 @@ import { FooterModule } from './components/footer';
 import { environment } from 'src/environments/environment.prod';
 import { BASE_URL, API_KEY } from './shared/injectTokens/injectTokens';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
-import { ButtonDirective } from './shared/directives/button.directive';
-import { AlertModule } from './components';
-import { ButtonsModule } from './ui';
 
 const MATERIAL_MODULES = [
 	MatButtonModule,
@@ -47,6 +45,7 @@ const MATERIAL_MODULES = [
 	MatProgressSpinnerModule,
 	MatDividerModule,
 	MatTooltipModule,
+	MatToolbarModule,
 ];
 const NGRX_STORE_MODULES = [
 	StoreModule.forRoot({}, {}),
@@ -66,8 +65,6 @@ const NGRX_STORE_MODULES = [
 		...MATERIAL_MODULES,
 		HeaderModule,
 		FooterModule,
-		AlertModule,
-    ButtonsModule,
 	],
 	providers: [
 		{

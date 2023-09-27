@@ -1,17 +1,5 @@
-import { ChangeDetectionStrategy, Component, Directive, ElementRef, Renderer2 } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-
-@Directive({
-	selector: '[appColor]',
-})
-export class HighlightDirective {
-	constructor(
-		el: ElementRef,
-		private renderer: Renderer2,
-	) {
-		renderer.addClass(el.nativeElement, 'bI');
-	}
-}
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { StyleManager } from 'src/app/shared/services/style-manager.service';
 
 @Component({
 	selector: 'app-header',
@@ -19,4 +7,13 @@ export class HighlightDirective {
 	styleUrls: ['./header.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+	isDark = this.styleManager.isDark;
+
+	constructor(private styleManager: StyleManager) {}
+
+	toggleDarkTheme() {
+		this.styleManager.toggleDarkTheme();
+		this.isDark = !this.isDark;
+	}
+}

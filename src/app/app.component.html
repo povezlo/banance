@@ -1,25 +1,35 @@
-<app-header></app-header>
+<div class="app-container">
+  <header>
+      <app-header></app-header>
+  </header>
+  <main>
+      <mat-sidenav-container (backdropClick)="close('backdrop')">
 
-<mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
+          <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+              <p>
+                  <button mat-button (click)="close('toggle button')">Toggle</button>
+              </p>
+          </mat-sidenav>
 
-  <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
-    <p><button mat-button (click)="close('toggle button')">Toggle</button></p>
-  </mat-sidenav>
+          <mat-sidenav-content class="mat-elevation-z1">
+                <mat-toolbar>
+                  <mat-toolbar-row>
+                    <h2>APP_TOOLBAR_TITLE </h2>
+                  </mat-toolbar-row>
+                </mat-toolbar>
+              <h1>Angular Material Theming System: Complete Guide</h1>
+              <p>Lorem*40</p>
+              <router-outlet></router-outlet>
+          </mat-sidenav-content>
+      </mat-sidenav-container>
+  </main>
+  <footer>
+      <app-footer></app-footer>
+  </footer>
+</div>
 
-  <mat-sidenav-content><button mat-button [color]="'accent'">Button</button>
-    <p><button mat-button (click)="sidenav.open()">Open</button></p>
-      <h1>Angular Material Theming System: Complete Guide</h1>
-      <button mat-button (click)="toggleDarkTheme()" class="theme-toggle btn-big" aria-label="Toggle Dark Theme">
-        <mat-icon>{{ isDark ? "dark_mode" : "light_mode" }}</mat-icon>
-      </button>
-    <button mat-raised-button matTooltip="Info about the action" color="primary" class="btn-info">btn-info</button>
-    <app-button>click</app-button>
 
-    <h2 class="mat-display-1">HOw</h2>
-    <p>Closed due to: {{reason}}</p>
-    <app-alert></app-alert>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
 
-<app-footer></app-footer>
+
+
+
