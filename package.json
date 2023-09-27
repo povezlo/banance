@@ -8,8 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
-    "lint": "eslint ./src/**",
-    "lint:ci": "lint",
+    "lint": "eslint \"**/*.{ts, tsx}\"",
     "lint:fix": "eslint ./src/** --fix"
   },
   "private": true,
