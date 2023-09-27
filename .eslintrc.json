@@ -3,8 +3,7 @@
   "ignorePatterns": [
     "projects/**/*",
     "*.ico",
-    "*.scss",
-    "src/assets/**/*"
+    "*.scss"
   ],
   "env": {
     "browser": true,
