@@ -20,7 +20,7 @@ jobs:
       - name: Install modules
         run: npm ci
       - name: Lint
-        run: npm run lint
+        run: eslint ./src/**
   test:
     needs: [lint]
     continue-on-error: true
