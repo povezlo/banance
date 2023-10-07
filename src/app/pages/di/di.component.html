@@ -1,0 +1,16 @@
+Home Component
+<app-button color="primary" [routerLink]="['/']">
+  Go Home Page
+</app-button>
+<app-button color="primary" (click)="fetch(1)">
+  Get Content 1
+</app-button><app-button color="primary" (click)="fetch(2)">
+  Get Content 2
+</app-button>
+<ng-container *ngIf="data$ | async as data">
+  <h3>Responce: {{ data.id }}</h3>
+  <h2>{{ data.title }}</h2>
+</ng-container>
+
+<app-child1></app-child1>
+<app-child2></app-child2>

@@ -1,0 +1,10 @@
+<p>child1 works!</p>
+<h1>{{animal.animal}}</h1>
+<app-grandchild></app-grandchild>
+<app-button color="primary" (click)="fetch(2)">
+  Get Content child 1
+</app-button>
+<ng-container *ngIf="data$ | async as data">
+  <h3>Responce: {{ data.id }}</h3>
+  <h2>{{ data.title }}</h2>
+</ng-container>
