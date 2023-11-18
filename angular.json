@@ -86,10 +86,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "banance:build:production"
+              "buildTarget": "banance:build:production"
             },
             "development": {
-              "browserTarget": "banance:build:development"
+              "buildTarget": "banance:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -97,7 +97,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "banance:build"
+            "buildTarget": "banance:build"
           }
         },
         "test": {
